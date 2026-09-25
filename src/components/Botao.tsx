@@ -1,27 +1,29 @@
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, StyleProp, TextStyle, } from "react-native";
 import { styles } from "@/app/styles";
 
 interface BotaoProps{
     texto: string;
     onPress: () => void;
-    cor?: string;
+    estilo?: any;
+    estiloTexto?: StyleProp<TextStyle>;
 }
 
 export default function Botao ({
     texto,
     onPress,
-    cor = "#bc781e",
+    estilo,
+    estiloTexto,
 }: BotaoProps){
     return(
         <Pressable
             style={({pressed}) => [
                 styles.botao,
+                estilo,
                 pressed && styles.botaoPressionado,
-                {backgroundColor: cor}
             ]}
             onPress={onPress}
         >
-            <Text style={styles.textoBotao}>{texto}</Text>
+            <Text style={[styles.textoBotao, estiloTexto]}>{texto}</Text>
         </Pressable>
     )
 }

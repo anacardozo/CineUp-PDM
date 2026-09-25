@@ -8,11 +8,10 @@ import CardFilme from "@/components/FilmeCard";
 
 export default function Home() {
     const [iniciado, setIniciado] = useState(false);
-    const [isFavorito, setIsFavorito] = useState(false);
 
-    function mudarFavorito() {
-        setIsFavorito(!isFavorito);
-    }
+    // function mudarFavorito() {
+    //     setIsFavorito(!isFavorito);
+    // }
 
     function abrirDetalhes(){
         console.log("Abrindo detalhes")
@@ -26,8 +25,6 @@ export default function Home() {
                     Imagem={require("../../assets/images/capa-interestelar.jpg")}
                     Genero="Ficção Científica"
                     Ano={2014}
-                    Status={isFavorito}
-                    onToggleFavorito={() => mudarFavorito()}
                     onVerDetalhes={abrirDetalhes}
                 />
                 <CardFilme
@@ -35,8 +32,6 @@ export default function Home() {
                     Imagem={require("../../assets/images/capa-interestelar.jpg")}
                     Genero="Ficção Científica"
                     Ano={2014}
-                    Status={isFavorito}
-                    onToggleFavorito={() => mudarFavorito()}
                     onVerDetalhes={abrirDetalhes}
                 />
                 <CardFilme
@@ -44,8 +39,6 @@ export default function Home() {
                     Imagem={require("../../assets/images/capa-interestelar.jpg")}
                     Genero="Ficção Científica"
                     Ano={2014}
-                    Status={isFavorito}
-                    onToggleFavorito={() => mudarFavorito()}
                     onVerDetalhes={abrirDetalhes}
                 />
                 <CardFilme
@@ -53,8 +46,6 @@ export default function Home() {
                     Imagem={require("../../assets/images/capa-interestelar.jpg")}
                     Genero="Ficção Científica"
                     Ano={2014}
-                    Status={isFavorito}
-                    onToggleFavorito={() => mudarFavorito()}
                     onVerDetalhes={abrirDetalhes}
                 />
             </View>

@@ -5,11 +5,11 @@ export default function Layout(){
         <Stack>
             <Stack.Screen
             name="index"
-            options={{title: "CineUp"}}
+            options={{ headerShown: false }}
             />
             <Stack.Screen
             name="catalogo"
-            options={{title: "Catálogo"}}
+            
             />
         </Stack>
     )

@@ -33,7 +33,6 @@ export default function Home() {
           <Botao
             texto={iniciado ? "Continuar" : "Catálogo"}
             onPress={iniciarAplicacao}
-            cor="#eac038"
           />
         </View>
     </SafeAreaView>

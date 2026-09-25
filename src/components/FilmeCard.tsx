@@ -2,6 +2,7 @@ import { Text, View, Image, Pressable, ImageSourcePropType } from "react-native"
 import { styles } from "@/app/styles";
 import { FontAwesome } from '@expo/vector-icons'
 import Botao from "./Botao";
+import { useState } from "react";
 
 interface CardFilmeProp {
     Titulo: string;
@@ -9,7 +10,6 @@ interface CardFilmeProp {
     Genero: string;
     Ano: number;
     Status?: boolean;
-    onToggleFavorito?: () => void;
     onVerDetalhes: () => void;
 }
 
@@ -19,14 +19,18 @@ export default function CardFilme({
     Genero,
     Ano,
     Status,
-    onToggleFavorito,
+    // onToggleFavorito,
     onVerDetalhes,
 }: CardFilmeProp) {
+
+    const [isFavorito, setIsFavorito] = useState(false);
+
     return (
         <View style={styles.cardFilme}>
             <Image
                 style={styles.imagemFilme}
                 source={ Imagem }
+                resizeMode="cover"
             />
 
             <Text style={styles.tituloFilme}>
@@ -42,18 +46,19 @@ export default function CardFilme({
             </Text>
 
             <View style={styles.botoesFilme}>
-                <Pressable onPress={onToggleFavorito}>
+                <Pressable onPress={() => setIsFavorito(!isFavorito)}>
                     <FontAwesome
-                        name={Status ? "star" : "star-o"}
+                        name={isFavorito ? "star" : "star-o"}
                         size={24}
-                        color={Status ? "#eac038" : "gray"}
+                        color={isFavorito ? "#eac038" : "gray"}
                     />
                 </Pressable>
 
                 <Botao
                     texto={"Detalhes"}
                     onPress={onVerDetalhes}
-                    cor="#2563EB"
+                    estilo={styles.botaoDetalhes}
+                    estiloTexto={styles.textoBotaoDetalhes}
                 />
 
             </View>
