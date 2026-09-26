@@ -13,6 +13,7 @@ interface CardFilmeProp {
     onVerDetalhes: () => void;
 }
 
+
 export default function CardFilme({
     Titulo,
     Imagem,
