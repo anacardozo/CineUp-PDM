@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import {
   Button,
   Image,
-  ScrollView,
-  SectionList,
+  FlatList, 
   Text,
   View,
 } from "react-native";
@@ -13,115 +12,89 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import CardFilme from "@/components/FilmeCard";
 
-const generos = [
+const Filmes = [
   {
-    title: "Ficção Científica",
-    data: [
-      {
-        id: "1",
-        titulo: "Interestelar",
-        image: require("../../assets/images/capa-interestelar.jpg"),
-        ano: 2014,
-      },
-    ],
+    id: "1",
+    titulo: "Interestelar",
+    image: require("../../assets/images/capa-interestelar.jpg"),
+    genero: "Ficção Científica",
+    ano: 2014,
   },
   {
-    title: "Romance",
-    data: [
-      {
-        id: "2",
-        titulo: "A Hipótese do Amor",
-        ano: 2026,
-        image: require("../../assets/images/capa-hipotese.jpg"),
-      },
-      {
-        id: "4",
-        titulo: "Como Eu Era Antes de Você",
-        ano: 2016,
-        image: require("../../assets/images/capa-antesdevoce.jpg"),
-      },
-    ],
+    id: "2",
+    titulo: "A Hipótese do Amor",
+    image: require("../../assets/images/capa-hipotese.jpg"),
+    genero: "Romance",
+    ano: 2026,
   },
   {
-    title: "Terror",
-    data: [
-      {
-        id: "6",
-        titulo: "Pânico VI",
-        ano: 2023,
-        image: require("../../assets/images/capa-panico.jpg"),
-      },
-      {
-        id: "8",
-        titulo: "Corra!",
-        ano: 2017,
-        image: require("../../assets/images/capa-corra.jpg"),
-      },
-    ],
+    id: "3",
+    titulo: "Paranóia",
+    image: require("../../assets/images/capa-paranoia.jpg"),
+    genero: "Thriller",
+    ano: 2007,
   },
   {
-    title: "Thriller",
-    data: [
-      {
-        id: "3",
-        titulo: "Paranóia",
-        image: require("../../assets/images/capa-paranoia.jpg"),
-        ano: 2007,
-      },
-    ],
+    id: "4",
+    titulo: "Como eu era antes de você",
+    image: require("../../assets/images/capa-antesdevoce.jpg"),
+    genero: "Romance",
+    ano: 2023,
   },
   {
-    title: "Comédia",
-    data: [
-      {
-        id: "5",
-        titulo: "Gente Grande",
-        image: require("../../assets/images/capa-gentegrande.jpg"),
-        ano: 2010,
-      },
-      {
-        id: "7",
-        titulo: "Minha Mãe É Uma Peça",
-        image: require("../../assets/images/capa-mmeup.jpg"),
-        ano: 2013,
-      },
-    ],
+    id: "5",
+    titulo: "Gente Grande",
+    image: require("../../assets/images/capa-gentegrande.jpg"),
+    genero: "Comédia",
+    ano: 2010,
+  },
+  {
+    id: "6",
+    titulo: "Pânico VI",
+    image: require("../../assets/images/capa-panico.jpg"),
+    genero: "Terror",
+    ano: 2023,
+  },
+  {
+    id: "7",
+    titulo: "Minha Mãe É Uma Peça",
+    image: require("../../assets/images/capa-mmeup.jpg"),
+    genero: "Comédia",
+    ano: 2013,
+  },
+  {
+    id: "8",
+    titulo: "Corra!",
+    image: require("../../assets/images/capa-corra.jpg"),
+    genero: "Terror",
+    ano: 2017,
   },
 ];
 
 export default function Home() {
   const [iniciado, setIniciado] = useState(false);
 
-  // function mudarFavorito() {
-  //     setIsFavorito(!isFavorito);
-  // }
-
-  function abrirDetalhes() {
-    console.log("Abrindo detalhes");
+  function abrirDetalhes(titulo: string) {
+    console.log(`Abrindo detalhes de: ${titulo}`);
   }
 
   return (
-    <ScrollView style={styles.ScrollView}>
-      <View style={styles.listaFilmes}>
-        <SectionList
-          sections={generos}
-          keyExtractor={(item) => item.id}
-          renderSectionHeader={({section: {title} }) => (
-            <Text style={{ fontSize: 20, fontWeight: "bold", marginVertical: 8 }}>
-            {title}
-          </Text>
-          )}
-          renderItem={({ item, section }) => (
+    <View style={styles.listaFilmes}>
+      <FlatList
+        data={Filmes}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.cardFilme}>
             <CardFilme
               Titulo={item.titulo}
               Imagem={item.image}
+              Genero={item.genero}
               Ano={item.ano}
-              Genero={section.title}
-              onVerDetalhes={abrirDetalhes}
+              onVerDetalhes={() => abrirDetalhes(item.titulo)}
             />
-          )}
-        />
-      </View>
-    </ScrollView>
+          </View>
+        )}
+      />
+    </View>
   );
 }
