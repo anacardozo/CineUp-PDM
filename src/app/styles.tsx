@@ -53,28 +53,31 @@ export const styles = StyleSheet.create({
 
   // ESTILOS DA LISTA E DOS CARDS
   listaFilmes: {
-    flexDirection: "row", // Coloca os itens na horizontal
-    flexWrap: "wrap", // Força os itens a pularem para a linha de baixo se não couberem
-    justifyContent: "space-between", // Adiciona o espaço central entre as duas colunas
-    padding: 15,
+    flex: 1,
+    paddingHorizontal: 15,
+  },
+  linha: {
+    justifyContent: "space-between",
+  },
+  itemFilme: {
+    width: "48%",
+    marginBottom: 10,
   },
   cardFilme: {
-    flex: 1,
-    width: "48%",
-    borderRadius: 10,
-    marginBottom: 20,
-    gap: 5,
+    width: "100%",
+    marginBottom: 10,
   },
   imagemFilme: {
     width: "100%",
-    height: 200,
+    height: 180,
     borderRadius: 15,
     alignSelf: "center",
-    marginTop: 5,
+    marginTop: 15,
   },
   tituloFilme: {
     fontSize: 20,
     fontWeight: "bold",
+    color: "#d9ab14",
   },
   generoFilme: {
     fontSize: 16,

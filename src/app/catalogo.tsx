@@ -1,13 +1,7 @@
 import Botao from "@/components/Botao";
 import { router } from "expo-router";
 import { useState, useEffect } from "react";
-import {
-  Button,
-  Image,
-  FlatList, 
-  Text,
-  View,
-} from "react-native";
+import { Button, Image, FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import CardFilme from "@/components/FilmeCard";
@@ -83,8 +77,10 @@ export default function Home() {
       <FlatList
         data={Filmes}
         keyExtractor={(item) => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.linha}
         renderItem={({ item }) => (
-          <View style={styles.cardFilme}>
+          <View style={styles.itemFilme}>
             <CardFilme
               Titulo={item.titulo}
               Imagem={item.image}
