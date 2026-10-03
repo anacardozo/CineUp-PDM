@@ -9,7 +9,12 @@ export default function Layout(){
             />
             <Stack.Screen
             name="catalogo"
-            
+            />
+            <Stack.Screen
+            name="detalhes"
+            />
+            <Stack.Screen
+            name="sobre"
             />
         </Stack>
     )

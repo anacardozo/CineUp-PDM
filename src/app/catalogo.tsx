@@ -2,7 +2,6 @@ import Botao from "@/components/Botao";
 import { router } from "expo-router";
 import { useState, useEffect } from "react";
 import { Button, Image, FlatList, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import CardFilme from "@/components/FilmeCard";
 
@@ -68,9 +67,18 @@ const Filmes = [
 export default function Home() {
   const [iniciado, setIniciado] = useState(false);
 
-  function abrirDetalhes(titulo: string) {
+  function abrirDetalhes(titulo: string, id: string, isFavorito: boolean) {
     console.log(`Abrindo detalhes de: ${titulo}`);
+
+    router.push({
+      pathname: "/detalhes",
+      params: {
+        id: id,
+        favorito: isFavorito ? 'true' : 'false'
+      }
+    })
   }
+
 
   return (
     <View style={styles.listaFilmes}>
@@ -86,7 +94,7 @@ export default function Home() {
               Imagem={item.image}
               Genero={item.genero}
               Ano={item.ano}
-              onVerDetalhes={() => abrirDetalhes(item.titulo)}
+              onVerDetalhes={(isFavoritoLocal) => abrirDetalhes(item.titulo, item.id, isFavoritoLocal)}
             />
           </View>
         )}

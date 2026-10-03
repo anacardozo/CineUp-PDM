@@ -10,7 +10,7 @@ interface CardFilmeProp {
     Genero: string;
     Ano: number;
     Status?: boolean;
-    onVerDetalhes: () => void;
+    onVerDetalhes: (isFavorito:boolean) => void;
 }
 
 
@@ -20,7 +20,6 @@ export default function CardFilme({
     Genero,
     Ano,
     Status,
-    // onToggleFavorito,
     onVerDetalhes,
 }: CardFilmeProp) {
 
@@ -57,7 +56,7 @@ export default function CardFilme({
 
                 <Botao
                     texto={"Detalhes"}
-                    onPress={onVerDetalhes}
+                    onPress={() => onVerDetalhes(isFavorito)}
                     estilo={styles.botaoDetalhes}
                     estiloTexto={styles.textoBotaoDetalhes}
                 />
